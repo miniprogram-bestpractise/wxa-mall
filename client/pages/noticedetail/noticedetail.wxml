@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="titbox">
+        <view class="act-tit">{{sTitle}}</view>
+        <view class="act-status">
+            <text class="act-time">更新时间：{{dtAdd}}</text>
+        </view>
+    </view>
+    <view class="act-intro">
+        <rich-text nodes="{{sContent}}"/>
+    </view>
+</view>
+
+
+
+

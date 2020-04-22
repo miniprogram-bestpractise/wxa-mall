@@ -1,0 +1,76 @@
+<!--order.wxml-->
+<view class="container">
+    <view class="orderzt">
+        <view class="zt-label">订单状态：
+            <text class="red" wx:if="{{order.status==2}}">已关闭</text>
+            <text class="red" wx:if="{{order.status==0}}">待支付</text>
+            <text class="red" wx:if="{{order.status==1}}">已支付</text>
+            <text class="red" wx:if="{{order.status==3}}">正在退款</text>
+            <text class="red" wx:if="{{order.status==4}}">已退款</text>
+            </view>
+        </view>
+    <view class="cartlist">
+        <!-- 供应商 -->
+        <view class="cartbox">
+            <!--第一个产品-->
+            <view class="goodsbox" wx:for="{{order.goods}}" wx:for-item="good" wx:key="{{good._id}}" wx:for-index="idx">
+        <view class="goods">
+            <view class="imgbox">
+                        <view class="good-link"><!--点击可跳走-->
+                            <image class="djimg" mode="scaleToFill" src="{{good.sPicLink}}" width="85" height="85" alt="{{good.name}}"></image>
+                </view>
+            </view>
+            <view class="goodinfo">
+                        <view class="infobox">
+                            <view class="good-name">{{good.sDescribe}}</view>
+                            <view class="good-price">￥<text class="price-red">{{good.iPriceReal}}</text></view>
+                    </view>
+                        <view class="sizebox">
+                    <view class="good-num">x{{order.goodsNum[idx]}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+        <!-- 供应商 -->
+            </view>
+    <view class="itembox">
+        <view class="itembtr">
+            <view class="itemtxt">实付金额</view>
+            <view class="itemnum red">￥<text>{{order.totalAmount}}</text></view>
+        </view>
+    </view>
+    <view class="itembox bg-gray">
+        <view class="itembtr">
+            <view class="itemtxt">订单信息</view>
+        </view>
+    </view>
+    <view class="addressbox">
+        <view class="pagelink">
+            <view class="namebox">
+                <view class="person">{{order.address.userName}}</view>
+                <view class="tel">{{order.address.telNumber}}</view>
+            </view>
+            <view class="address">
+            {{order.address.provinceName}}{{order.address.cityName}}{{order.address.countyName}}{{order.address.detailInfo}}
+            </view>
+        </view>
+    </view>
+    <view class="itembox bg-gray">
+        <view class="itembtr">
+            <view class="itemtxt">订单信息</view>
+        </view>
+    </view>
+    <view class="itembox">
+        <view class="itembtr">
+            <view class="itemtxt">订单编号</view>
+            <view class="itemnum">{{order._id}}</view>
+        </view>
+    </view>
+    <view class="itembox">
+        <view class="itembtr">
+            <view class="itemtxt">创建时间</view>
+            <view class="itemnum">{{order.creatTimeString}}</view>
+        </view>
+    </view>
+</view>

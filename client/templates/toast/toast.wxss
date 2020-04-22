@@ -1,0 +1,30 @@
+/**dialog-alert**/
+.pop-dialog-alert{
+    display:none;
+}
+.pop-show{
+    display:block;
+}
+.dialog-alert{
+    position: fixed;
+    z-index: 5000;
+    width: auto;
+    max-width: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .7);
+    text-align: center;
+    border-radius: 3px;
+}
+.alert-txt{
+    padding: 6px 10px;
+    min-height: 22px;
+    font-size: 14px;
+    line-height: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #fff;
+    display: block;
+}

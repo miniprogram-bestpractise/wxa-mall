@@ -1,0 +1,20 @@
+<!--class.wxml-->
+<view class="container">
+    <view class="class-item">
+        <navigator url="/pages/productlist/productlist?id=1" class="class-link"  hover-class="none">
+            <view class="item-tit">全部商品</view>
+            <view class="arrright">></view>
+        </navigator>
+    </view>
+    <block wx:for="{{Categories}}" wx:key="item" >
+        <view  class="class-list" >
+            <view id="{{item.iCatId}}" class="list-item" bindtap="tapClick">
+                <view class="item-tit">{{item.iSortOrsCatNameder}}</view>
+                <view class="arrright">></view>
+            </view>
+            <view  class="sub-class cf">
+                <view id="{{submit.iCatId}}" bindtap="tapClick" class="sub-item" wx:for="{{item.submit}}" wx:for-item="submit">{{submit.iSortOrsCatNameder}}</view>          
+            </view>
+        </view>
+     </block>
+</view>

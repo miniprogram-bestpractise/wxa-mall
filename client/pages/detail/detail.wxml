@@ -1,0 +1,127 @@
+<import src="../../templates/cart/cart.wxml"></import>
+<import src="../../templates/toast/toast.wxml"></import>
+<!--detail.wxml-->
+<view class="container">
+  <!-- 轮播栏 -->
+  <swiper class="adbox" indicator-dots="{{indicatorDots}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgSlides}}">
+      <swiper-item>
+        <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" src="{{item}}" class="slide-image" mode="aspectFit" bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 商品信息栏 -->
+  <view class="good-info">
+    <view class="infocont">
+      <view class="djname">{{good.sDescribe}}</view>
+      <view class="djprice">
+        <view class="newpri">￥
+          <text class="newprinum">{{good.iOriPrice}}</text>
+        </view>
+      </view>
+      <view class="oldpri" wx:if="{{good.iOriPrice>good.iPriceReal}}">原价￥{{good.iPriceReal}}</view>
+    </view>
+  </view>
+
+  <view class="good-qr" wx:if="{{qrcode && isQrShow}}">
+    <image wx:if="{{qrcode}}" src="{{qrcode}}"></image>
+    <view class="good-qr-close" bindtap="closeQr"></view>
+  </view>
+</view>
+<!-- 分栏 -->
+<view class="lbtab">
+  <view class="lbtabbox">
+    <text data-gid="0" class="tabtit {{tab==0?'curtab':''}}" bindtap="changeTab">商品详情</text><!--选中添加curtab -->
+  </view>
+  <view class="lbtabbox">
+    <text data-gid="1" class="tabtit {{tab==1?'curtab':''}}" bindtap="changeTab">参数</text>
+  </view>
+</view>
+<!-- 切换内容 -->
+<view class="detailcont">
+  <!-- 商品详情 -->
+  <view class="contbox {{tab==1?'hide':''}}">
+    <view class="detailimgul">
+      <view class="detailimgbox">
+        <image class="detailimg" src="{{good.goods_detail}}" mode="widthFix"/>
+      </view>
+    </view>
+  </view>
+  <!-- 参数 -->
+  <view class="contbox {{tab==0?'hide':''}}">
+    <view class="parmcont">
+      <view class="parmitem">
+        <view class="parm-name">商品名称</view>
+        <view class="parameter">{{good.sDescribe}}</view>
+      </view>
+      <view class="parmitem">
+        <view class="parm-name">商品毛重</view>
+        <view class="parameter">398g</view>
+      </view>
+      <view class="parmitem">
+        <view class="parm-name">上架时间</view>
+        <view class="parameter">2017-02-07</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 商家信息 -->
+<view class="producer-info">
+  <view class="producer">
+    <view class="producer-tit">联系商家</view>
+    <view class="item-tit">商家：<strong class="item-name">DEMO商城自营</strong></view>
+    <view class="item-tit">商家介绍：<strong class="item-name">xxxxxx</strong></view>
+    <view class="item-tit">商家联系方式</view>
+    <view class="item-tit">电话：<strong class="item-name">xxxxxx</strong></view>
+    <view class="item-tit">QQ：<strong class="item-name">xxxxxxx</strong></view>
+    <view class="item-tit">微信：<strong class="item-name">xxxxxx</strong></view>
+    <view class="item-tit">商家服务时间:<strong class="item-name">xxxxxx</strong></view>
+    <view class="item-tit">在线时间：<strong class="item-name">xxxxxx</strong></view>
+  </view>
+</view>
+
+<!-- 返回顶部 -->
+<view class="topnav">
+  <view class="topnav-btn btn-service"></view>
+  <view class="topnav-btn btn-top"></view>
+</view>
+
+<!-- 底部tab栏 -->
+<view class="menutab">
+  <view class="mtabbox">
+    <view class="subtabbox">
+      <navigator open-type="switchTab" url="/pages/index/index" class="menu-link" hover-class="none">
+        <view class="menuico ico-home"></view>
+        <text class="menutxt">首页</text>
+      </navigator>
+    </view>
+    <view class="subtabbox">
+      <navigator open-type="switchTab" url="/pages/cart/cart" class="menu-link" hover-class="none">
+        <view class="menuico ico-gcart"></view>
+        <text class="menutxt">购物车</text>
+      </navigator>
+      <!-- <view class="comico cartnum">{{cartNum}}</view> -->
+    </view>
+    <view class="subtabbox">
+      <view class="menu-link" hover-class="none" bindtap="getQr">
+        <view class="menuico .ico-star"></view>
+        <text class="menutxt">商品码</text>
+      </view>
+    </view>
+  </view>
+  <view class="mtabbox">
+    <view class="subtabbtn">
+      <view class="btn-yellow btn-cart" hover-class="none" bindtap="addCart">
+        <text class="btntxt">加入购物车</text>
+      </view>
+    </view>
+    <view class="subtabbtn">
+      <view class="btn-red" hover-class="none" bindtap="buyNow">
+        <text class="btntxt">立即购买</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<template is="cart" data="{{shoppingCart}}"></template>
+<template is="toast" data="{{toast}}"></template>

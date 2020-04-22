@@ -1,0 +1,17 @@
+{
+  "name": "pay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ip": "^1.1.5",
+    "unique-string": "^2.0.0",
+    "wx-server-sdk": "latest",
+    "wx-js-utils": "latest"
+  }
+}

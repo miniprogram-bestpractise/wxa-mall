@@ -1,0 +1,69 @@
+<import src="../../templates/toast/toast.wxml"></import>
+
+<!--modifyaddr.wxml-->
+<view class="container">
+    <form bindsubmit="save" class="addrform">
+        <input wx:if="{{address.id != ''}}" class="addr-hidden" name="id" type="hidden" value="{{address.id}}"/>
+        <view class="addrform">
+            <view class="addrbox">
+                <label class="addr-lab">收货人</label>
+                <view class="section">
+                    <input name="name" class="addr-txt" type="text" placeholder="请填写收货人" value="{{address.name}}"/>
+                </view>
+            </view>
+            <view class="addrbox">
+                <label class="addr-lab">联系电话</label>
+                <view class="section">
+                    <input name="mobile" class="addr-txt" type="number" placeholder="请填写联系电话" value="{{address.mobile}}"/>
+                </view>
+            </view>
+            <view class="addrbox">
+                <label class="addr-lab">所在地区</label>
+                <view class="section">
+                    <view class="btn-sel" bindtap="showRegionSelector">
+                        <text wx:if="{{address.region == ''}}">请选择</text>
+                        <text wx:if="{{address.region != ''}}">{{address.region}}</text>
+                        <input name="region" type="hidden" value="{{address.region}}"/>
+                    </view>
+                </view>
+            </view>
+            <view class="addrbox">
+                <label class="addr-lab">详细地址</label>
+                <view class="section">
+                    <input name="detail" class="addr-txt" type="text" placeholder="请填写详细地址" value="{{address.detail}}"/>
+                </view>
+            </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="addr-btnbox">
+            <view class="contpd">
+                <button class="btn-red btn-save" formType="submit">保存</button>
+            </view>
+        </view>
+    </form>
+</view>
+
+<!--地区弹窗-->
+<view wx:if="{{isShowRegionSelector}}" class="cart-dialog slideInUp cart-show" id="dialog-cart"><!-- 显示添加cart-show-->
+    <view class="dialog-bg"></view>
+    <view class="dialog-cont dialog-picker">
+        <view class="weui-picker-btn">
+            <view data-action="cancel" class="weui-picker-action" bindtap="hideRegionSelector">取消</view>
+            <view data-action="select" class="weui-picker-action" bindtap="hideRegionSelector">确定</view>
+        </view>    
+        <!--<view class="cursel">{{year}}年{{month}}月{{day}}日</view>-->
+        <picker-view class="selbox" value="{{value}}" bindchange="onRegionChange">
+            <picker-view-column class="box-col">
+                <view wx:for="{{region.provinces}}" wx:for-key="{{item.key}}" class="col-items">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column class="box-col">
+                <view wx:for="{{region.citys}}" wx:for-key="{{item.key}}" class="col-items">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column class="box-col">
+                <view wx:for="{{region.districts}}" wx:for-key="{{item.key}}" class="col-items">{{item.name}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>
+
+<template is="toast" data="{{toast}}"></template>

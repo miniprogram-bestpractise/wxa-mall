@@ -1,0 +1,45 @@
+<!--order.wxml-->
+<view class="container">
+    <view class="addressbox">
+        <view class="pagelink" bindtap="bindViewTap">
+            <!-- 跳转事件 -->
+            <view class="namebox">
+                <view class="person">{{address.userName}}</view>
+                <view class="tel">{{address.telNumber}}</view>
+            </view>
+            <view class="address">{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</view>
+        </view>
+    </view>
+
+    <view class="goodsbox" wx:for="{{order.goods}}" wx:for-item="good" wx:for-index="idx">
+        <view class="goods">
+            <view class="imgbox">
+                <view class="good-link">
+                    <image class="djimg" mode="scaleToFill" src="{{good.sPicLink}}" width="85" height="85" alt="道具图"></image>
+                </view>
+            </view>
+            <view class="goodinfo">
+                <view class="goodname">{{good.sDescribe}}</view>
+                <view class="goodpri">
+                    <view class="good-price">￥
+                        <text class="price-red">{{good.iPriceReal}}</text>
+                    </view>
+                    <view class="good-num">x{{order.goodsNum[idx]}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+        <!-- 按钮区 -->
+<view class="cart-btnbox">
+    <!-- 确认 -->
+    <view class="balance">
+        <view class="totalpri">
+            <view class="prinum">合计：
+                <text class="red">￥<text class="ft18">{{order.totalAmount}}</text></text>
+            </view>
+        </view>
+        <view class="cart-btn btn-balance" bindtap="pay">确认</view>
+    </view>
+</view>

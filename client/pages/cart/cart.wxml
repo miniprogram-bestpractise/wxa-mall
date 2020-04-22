@@ -1,0 +1,82 @@
+<import src="../../templates/toast/toast.wxml"></import>
+<!--cart.wxml-->
+<view class="container">
+
+  <view wx:if="{{isEmpty}}" class="combox">
+    <view class="com-cart"></view>
+    <view class="com-tips">购物车好空呀，快去选购吧~</view>
+    <navigator open-type="switchTab" url="/pages/index/index" class="btn btn-tips">去逛逛</navigator>
+  </view>
+
+  <view wx:if="{{!isEmpty}}" class="cartlist">
+    <block wx:for="{{goodsList}}" wx:for-item="goods" wx:for-index="j" wx:key="{{goods.buyGoodsId}}">
+      <!--第一个产品-->
+      <view class="goodsbox">
+        <view class="goods">
+          <view class="radiobox">
+            <view wx:if="{{!goods.selected}}" class="box-radio" bindtap="checkGoods" data-id="{{goods.buyGoodsId}}"></view>
+            <view wx:if="{{goods.selected}}" class="box-radio box-checked" bindtap="uncheckGoods" data-id="{{goods.buyGoodsId}}"></view>
+            <!--选中添加box-checked-->
+          </view>
+          <view class="imgbox">
+            <view class="good-link">
+              <!--点击可跳走-->
+              <image
+                class="djimg"
+                mode="scaleToFill" 
+                src="{{goods.goods.sPicLink}}"
+                width="85" height="85"></image>
+            </view>
+          </view>
+          <view class="goodinfo">
+            <view class="goodname">{{goods.goods.sDescrible}}</view>
+            <view class="sizebox">
+              <view class="i-arrdon hide"></view>
+            </view>
+            <view class="goodpri">
+              <view class="good-price">￥
+                <text class="price-red">{{goods.goods.iPriceReal}}</text>
+              </view>
+              <view class="good-num">
+                <view class="num-action" bindtap="downNum" data-id="{{goods.buyGoodsId}}">
+                  <view class="numico ico-minus"></view>
+                </view>
+                <view class="num-cur">{{goods.buyNum}}</view>
+                <view class="num-action" bindtap="upNum" data-id="{{goods.buyGoodsId}}">
+                  <view class="numico ico-plus"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 按钮区 -->
+  <view wx:if="{{!isEmpty}}" class="cart-btnbox">
+    <!-- 去结算 -->
+    <view wx:if="{{!editing}}" class="balance">
+      <view class="totalpri">
+        <view class="prinum">合计：
+          <text class="red">￥<text class="ft18">{{totalPrice}}</text></text>
+        </view>
+        <view class="pritip">不含运费</view>
+      </view>
+      <view class="cart-btn btn-balance" bindtap="makeOrder">去结算</view>
+    </view>
+    <!-- 删除 -->
+    <view wx:if="{{editing}}" class="balance">
+      <!-- 点击编辑时显示删掉hide -->
+      <view class="del-check">
+        <view wx:if="{{!checkall}}" class="i-radio" bindtap="checkAll"></view>
+        <!--选中添加del-checked-->
+        <view wx:if="{{checkall}}" class="i-radio del-checked" bindtap="uncheckAll"></view>
+        <!--选中添加del-checked-->
+        <text>全选</text>
+      </view>
+      <view class="cart-btn btn-del" bindtap="del">删除</view>
+    </view>
+  </view>
+</view>
+
+<template is="toast" data="{{toast}}"></template>

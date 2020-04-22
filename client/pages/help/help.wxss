@@ -1,0 +1,19 @@
+/**delivery.wxss**/
+.cont{
+    padding: 0 13px 60px;
+    background: #fff;
+}
+.title{
+    font-size: 18px;
+    color: #383838;
+    height: 47px;
+    line-height: 47px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.helptxt {
+    margin: 10px 0;
+    height: auto;
+    line-height: 22px;
+    color: #383838;
+    font-size: 13px;
+}

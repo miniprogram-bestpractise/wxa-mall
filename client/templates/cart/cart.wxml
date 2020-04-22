@@ -1,0 +1,38 @@
+<!-- 购物车弹窗 -->
+<template name="cart">
+<view class="cart-dialog slideInUp {{shoppingCart.display}}"><!-- 显示添加cart-show-->
+    <view class="dialog-bg"></view>
+    <view class="dialog-cont">
+        <view class="dialog-close" bindtap="hideShoppingCart">
+            <view class="pop-close">x</view>
+        </view>
+        <view class="dialog-picbox">
+            <view class="dialog-cartdj">
+                <image class="dialog-cartimg" src="{{shoppingCart.goods.sPicLink}}" width="100" height="100" alt="实物图"></image>
+            </view>
+            <view class="dialog-cartinfo">
+                <view class="dialog-cartpri">￥<text class="dialog-cartprinum">{{shoppingCart.goods.iPriceReal}}</text></view>
+                <view class="dialog-cartstock">库存：{{shoppingCart.goods.stock}}</view>
+                
+            </view>
+        </view>
+        <scroll-view scroll-y="true" class="dialog-scrollbox" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+            <view class="dialog-scrollwrap">
+                <view class="dialog-djnum cf">
+                    <span class="fl dialog-num">数量</span>
+                    <view class="fr">
+                        <view class="fl dialog-action" bindtap="downNumInShoppingCart"><view class="dialog-numico ico-minus"></view></view>
+                        <view class="fl dialog-goodnum">{{shoppingCart.buyNum}}</view>
+                        <view class="fl dialog-action" bindtap="upNumInShoppingCart"><view class="dialog-numico ico-plus"></view></view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="dialog-btnbox">
+            <view wx:if="{{shoppingCart.mode == 1}}" href="javascript:;" class="dialog-btn-sure" bindtap="addShoppingCart" data-mode="{{shoppingCart.mode}}">确定</view>
+            <view wx:if="{{shoppingCart.mode == 3}}" href="javascript:;" class="dialog-btn dialog-btn-joincart" bindtap="addShoppingCart" data-mode="3">加入购物车</view>
+            <view wx:if="{{shoppingCart.mode == 3}}" href="javascript:;" class="dialog-btn dialog-btn-buynow" bindtap="addShoppingCart" data-mode="2">立即购买</view>
+        </view>
+    </view>
+</view>
+</template>

@@ -1,0 +1,124 @@
+<!--index.wxml-->
+<import src="../../templates/cart/cart.wxml"></import>
+<import src="../../templates/toast/toast.wxml"></import>
+
+<scroll-view scroll-y="true" bindscrolltolower="scrollToLower" enable-flex="true" enable-back-to-top="true" style="height: {{scrollHeight}}rpx">
+  <view>
+    <view class="tabbar">
+      <view id="1" class="tabbox  {{menuID==1?'curtab':''}}" bindtap="menuClick">
+        <view class="tabico ico-recom {{menuID==1?'cur-recom':''}} "></view>
+        <text class="tabtit  {{menuID==1?'curtit':''}} ">今日推荐</text>
+      </view>
+      <view id="2" class="tabbox {{menuID==2?'curtab':''}}" bindtap="menuClick">
+        <view class="tabico ico-baby {{menuID==2?'cur-baby':''}}"></view>
+        <text class="tabtit  {{menuID==2?'curtit':''}}">时尚美妆</text>
+      </view>
+      <view id="3" class="tabbox {{menuID==3?'curtab':''}}" bindtap="menuClick">
+        <view class="tabico ico-new {{menuID==3?'cur-new':''}}">
+          <view class="point-tip "></view>
+        </view>
+        <!-- 选中状态添加cur-new -->
+        <text class="tabtit  {{menuID==3?'curtit':''}}">数码电器</text>
+      </view>
+      <view id="4" class="tabbox {{menuID==4?'curtab':''}}" bindtap="menuClick">
+        <view class="tabico ico-discount {{menuID==4?'cur-discount':''}}"></view>
+        <text class="tabtit {{menuID==4?'curtit':''}}">个护清洁</text>
+      </view>
+      <view id="5" class="tabbox {{menuID==5?'curtab':''}}" bindtap="menuClick">
+        <view class="tabico ico-notice {{menuID==5?'cur-notice':''}}"></view>
+        <text class="tabtit {{menuID==5?'curtit':''}}">数码电器</text>
+      </view>
+    </view>
+    <view class="pagebox">
+      <!-- 推荐页 -->
+      <view class="page {{menuID==1?'':'hide'}}">
+        <swiper class="adbox" indicator-dots="{{indicatorDots}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{imgUrls}}" wx:key="unique">
+            <swiper-item>
+              <image id="{{item.iTargetType}}{{item.sLink}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;" src="{{item.sPicLink}}" class="slide-image" mode="aspectFit" data-gid="{{item.sLink}}" bindtap="bigImageClick" bindload="imageLoad" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- 精品推荐 -->
+        <view id="index_recommend" class="listbox {{showRecommendView?'listboxhide':''}}">
+          <text class="dj-tit">精品推荐</text>
+          <view class="djlist cf">
+            <!-- 道具列表 -->
+            <block wx:for="{{index_recommends}}" wx:key="unique">
+              <view class="djbox">
+                <view class="comico djmark">热卖</view>
+                <view id="{{item._id}}" class="dj-link" bindtap="bigImageClick">
+                  <view class="djimgbox">
+                    <image class="djimg" mode="widthFix" src="{{item.sPicLink}}"></image>
+                  </view>
+                  <text class="djname">{{item.sDescribe}}</text>
+                  <view class="pricebox">
+                    <text class="djpri">￥{{item.iPriceReal}}元</text>
+                    <text class="djoldpri">￥{{item.iOriPrice}}}元</text>
+                  </view>
+                </view>
+                <view id="{{item._id}}" class="comico btn-cart" bindtap="bindCartTap">购物车
+                </view>
+              </view>
+            </block>
+
+          </view>
+        </view>
+
+        <!-- 已到底部 -->
+        <view class="bottom-tips">已到底部</view>
+        <!-- loading加载
+            <view class="flower">
+                <view class="flower-icon"></view>
+                <text>加载中</text>
+            </view>-->
+      </view>
+      <!-- 全部宝贝 -->
+      <view class="page {{menuID!=1?'':'hide'}}">
+        <view class="babytab">
+          <view id="1" class="babytabbox {{subMenu2==1?'curtabbox':''}}" bindtap="subMenuTwoClick">
+            <text>销量</text>
+          </view>
+          <view id="2" class="babytabbox  {{subMenu2==2?'curtabbox':''}}" bindtap="subMenuTwoClick">
+            <text>新品</text>
+          </view>
+          <view id="3" class="babytabbox  {{subMenu2==3?'curtabbox':''}}" bindtap="subMenuTwoClick">
+            <text>价格</text>
+            <view class="comico ico-arr   {{(allIsSort==2)?'ico-atop':((allIsSort==1)?'ico-adown':'')}}"></view>
+          </view>
+        </view>
+        <!-- 道具列表 </scroll-view> <scroll-view class="djlist cf"  >-->
+        <view class="listbox">
+          <block wx:for="{{allGoodsList}}" wx:key="item">
+            <view class="djbox">
+              <view class="comico djmark">热卖</view>
+              <view id="{{item.iMallId}}" class="dj-link" bindtap="allGoodsListClick">
+                <view class="djimgbox">
+                  <image class="djimg" mode="widthFix" src="{{item.sProfileImg}}"></image>
+                </view>
+                <text class="djname">{{item.sMallName}}</text>
+                <view class="pricebox">
+                  <text class="djpri">￥{{item.iPriceReal}}元</text>
+                  <text class="djoldpri">￥{{item.iOriPrice}}}元</text>
+                </view>
+              </view>
+              <view id="{{item.iMallId}}" class="comico btn-cart" bindtap="allBindCartTap">购物车</view>
+            </view>
+          </block>
+          <view wx:if="{{isEnd}}" class="bottom-tips">已到底部</view>
+          <view wx:if="{{!isEnd}}" class="bottom-tips">加载中...</view>
+        </view>
+
+        <!-- 道具列表 -->
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<template is="cart" data="{{shoppingCart}}"></template>
+<template is="toast" data="{{toast}}"></template>
+
+<!-- 返回顶部 -->
+<view class="topnav">
+  <view class="topnav-btn btn-service"></view>
+  <view class="topnav-btn btn-top"></view>
+</view>

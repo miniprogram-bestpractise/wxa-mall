@@ -1,0 +1,108 @@
+<!--center.wxml-->
+<view class="container">
+  <!-- 个人信息 -->
+  <view class="userbox">
+    <view class="userimg">
+      <view class="imgbox">
+        <image class="headimg" mode="scaleToFill" src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <view class="head-ico ico-qq"></view>
+      <view class="head-ico ico-weixin" style="display:none;"></view>
+    </view>
+    <view class="userinfo">
+      <view class="nick">{{userInfo.nickName}}</view>
+      <button wx:if="{{userInfo.isLoaded && isAuthorized && !userInfo._openid}}" class="login" open-type="getPhoneNumber" bindgetphonenumber="bindGetPhoneNumber">
+        登录
+      </button>
+      <button wx:if="{{userInfo.isLoaded && !isAuthorized && !userInfo.nickName}}" class="authorize" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfoNew">
+        授权
+      </button>
+      <button wx:if="{{userInfo.nickName}}" class="logout" bindtap="bindLogout">
+        退出登录
+      </button>
+      <button class="btn-client" open-type="contact" bindcontact="handleContact" plain>客服</button>
+    </view>
+    <view class="helpbox">
+      <navigator url="/pages/address/address" class="address-link" hover-class="none">地址管理</navigator>
+      <navigator url="/pages/help/help" class="address-link" hover-class="none">帮助中心</navigator>
+      <navigator url="/pages/noticedetail/noticedetail?id=1" class="address-link" hover-class="none">商城公告</navigator>
+    </view>
+  </view>
+
+  <view class="tabpage">
+    <view class="pagecont {{tabContents.order}}">
+      <!-- 第一页 -->
+      <view class="subtab">
+        <view class="ordertabitem">
+          <view class="subtit current">我的订单</view>
+        </view>
+
+      </view>
+      <view class="cartlist">
+        <!-- 供应商 -->
+        <block wx:if="{{orderList.length > 0}}">
+          <view wx:for="{{orderList}}" wx:key="unique">
+            <view class="cartbox">
+              <!--第一个产品-->
+              <view class="goodsbox" wx:for="{{item.goods}}" wx:for-item="good" wx:key="unique" wx:for-index="idx">
+                <view class="goods">
+                  <view class="djimgbox">
+                    <view class="good-link">
+                      <!--点击可跳走-->
+                      <image class="djimg" mode="scaleToFill" src="{{good.sPicLink}}" width="85" height="85" alt="{{goods.sDescribe}}"></image>
+                    </view>
+                  </view>
+                  <view class="goodinfo">
+                    <view class="infobox">
+                      <view class="good-name">{{good.sDescribe}}</view>
+                      <view class="good-price">￥
+                        <text class="price-red">{{good.iPriceReal}}</text>
+                      </view>
+                    </view>
+                    <view class="sizebox">
+                      <view class="good-num">x{{item.goodsNum[idx]}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="moneybox">
+                <view class="money-txt">
+                  总额：
+                  <text class="red">￥<text class="ft18">{{item.totalAmount}}</text></text>
+                </view>
+              </view>
+              <view class="orderbtn">
+                <view class="itemblank"></view>
+                <button class="btn-gray btn-concat" open-type="contact" bindcontact="handleContact" send-message-path="/pages/orderstatus/orderstatus?id={{item._id}}" show-message-card send-message-title="商品订单">联系客服</button>
+                <view wx:if="{{item.status!=0}}" class="btn-gray btn-detail" data-id="{{item._id}}" bindtap="orderDetail">
+                  订单详情
+                </view>
+                <view wx:if="{{item.status==0}}" class="btn-red btn-concat" data-id="{{item._id}}" bindtap="goToPay">
+                  支付
+                </view>
+              </view>
+              <!--第一个产品-->
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="combox compt">
+            <view class="com-order"></view>
+            <view class="com-tips">您还未购买过商品！</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+
+  <block wx:if="{{moreLoading}}">
+    <!-- 已到底部 -->
+    <view class="bottom-tips">已到底部</view>
+    <!-- loading加载 -->
+    <view class="flower">
+      <view class="flower-icon"></view>
+      <text>加载中</text>
+    </view>
+  </block>
+</view>

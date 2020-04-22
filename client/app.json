@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/demo/demo",
+    "pages/center/center",
+    "pages/modifyaddr/modifyaddr",
+    "pages/address/address",
+    "pages/cart/cart",
+    "pages/productlist/productlist",
+    "pages/detail/detail",
+    "pages/noticedetail/noticedetail",
+    "pages/class/class",
+    "pages/help/help"
+  ],
+  "window": {
+    "backgroundColor": "#f0f4f5",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "小程序书籍DEMO商城",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7c7c7c",
+    "selectedColor": "#f7545f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/curhome.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/class/class",
+        "iconPath": "images/tabbar/class.png",
+        "selectedIconPath": "images/tabbar/curclass.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "images/tabbar/cart.png",
+        "selectedIconPath": "images/tabbar/curcart.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "iconPath": "images/tabbar/person.png",
+        "selectedIconPath": "images/tabbar/curperson.png",
+        "text": "个人"
+      }
+    ]
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

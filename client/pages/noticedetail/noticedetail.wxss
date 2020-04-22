@@ -1,0 +1,87 @@
+/**index.wxss**/
+
+.container{
+    background: #fff;
+    color: #333;
+    width: 100%;
+    padding-bottom: 100rpx;
+}
+.titbox{
+    height: 171rpx;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+.act-tit{
+    padding: 49rpx 30rpx 0 30rpx;
+    height: auto;
+    line-height: 38rpx;
+    font-size: 38rpx;
+    font-weight: 500;
+}
+.act-status{
+    padding: 25rpx 30rpx 0 30rpx;
+    width:auto;
+    text-align: left; 
+    font-size: 26rpx;   
+}
+.act-time{
+    padding-right: 15rpx;
+    width: auto;  
+    font-weight: 400;  
+}
+.status-going{
+    color: #18d091;
+}
+.status-finish{  
+    color: #e8622d;    
+}
+.act-due{
+    width: auto;    
+    color: #999;    
+}
+.act-intro{
+    width: 100%;
+    height: auto;
+    font-size: 50rpx;
+    padding-bottom: 600rpx;
+    padding-top: 60rpx;
+}
+.wxParse-p{
+    padding: 26rpx 15px 0;
+}
+.WxEmojiView{
+    font-size: 28rpx;
+    line-height: 30rpx;   
+}
+.intro-txt{
+    padding:26rpx 0 0; 
+    line-height: 46rpx;
+    font-size: 28rpx;
+    height: auto;
+    display: block;
+    text-align: left;
+}
+.imgbox{
+    margin: 0 auto;
+    width:100%;
+    height: auto;
+}
+image{  
+    display: block; 
+    margin: 20rpx 0 0;
+    width:100%;
+    height: auto;   
+    border:0;
+}
+.act-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height:87rpx;
+    border-top:  1px solid #eee;
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+}

@@ -1,0 +1,8 @@
+<!--delivery.wxml-->
+<view class="container">
+    <view class="cont">
+        <view class="helptxt ft15">运费收取标准</view>
+        <view class="helptxt">部分商品支持包邮服务。对于不包邮商品和地区我们将根据快递收费标准收取少量配送费用。</view>
+    </view>
+
+</view>

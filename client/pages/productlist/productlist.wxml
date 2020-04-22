@@ -1,0 +1,64 @@
+<!--productlist.wxml-->
+<import src="../../templates/cart/cart.wxml"></import>
+<import src="../../templates/toast/toast.wxml"></import>
+<view class="container">
+    <!-- 商品的搜索栏 -->
+    <view class="navbar">
+        <view class="searchbar">
+            <navigator url="/pages/class/class" open-type="switchTab" class="searchico bar-class" hover-class="none"></navigator> 
+            <view class="searchbox">
+                <view class="iptbox">
+                    <view class="iptwrap">
+                        <input type="text" bindinput="bindKeyInput" class="comipt" placeholder="搜索商品"/>
+                    </view>                    
+                </view>                
+                <view class="search-del">x</view>
+            </view>                
+        </view>
+        <!-- 中间的筛选条 -->
+        <view class="babytab">
+            <view id="1" class="babytabbox  {{subMenu==1?'curtabbox':''}}"  bindtap="subMenuClick">
+                <text>销量</text>
+            </view>
+            <view id="2" class="babytabbox  {{subMenu==2?'curtabbox':''}}"  bindtap="subMenuClick">
+                <text>新品</text>
+            </view>
+            <view id="3" class="babytabbox  {{subMenu==3?'curtabbox':''}}"  bindtap="subMenuClick">
+                <text>价格</text>
+                <view class="comico ico-arr   {{(allIsSort==2)?'ico-atop':((allIsSort==1)?'ico-adown':'')}}"></view>
+            </view>                
+        </view>        
+    </view>
+    <!-- 商品列表 -->
+    <view class="listbox">
+        <scroll-view  bindscrolltolower="bindAllGoodsDownLoad"  style="height:{{scrollHeight}}px;"  scroll-y="true">
+            <block wx:for="{{allGoodsList}}" wx:key="item" >
+                    <view class="djbox">
+                    <view  class="comico djmark">热卖</view>
+                        <view id="{{item.iMallId}}" class="dj-link"  bindtap="allGoodsListClick" >
+                            <view class="djimgbox">
+                                <image class="djimg" mode="widthFix"
+                                src="{{item.sProfileImg}}"></image>
+                            </view>
+                            <text class="djname">{{item.sMallName}}</text>
+                            <view class="pricebox">
+                                <text class="djpri">￥{{item.iPriceReal}}元</text>
+                                <text class="djoldpri">￥{{item.iOriPrice}}}元</text>
+                            </view>
+                        </view>
+                        <view id="{{item.iMallId}}" class="comico btn-cart" bindtap="allBindCartTap">购物车</view>
+                </view>
+                </block>
+                <view class="bottom-tips {{allGoodsEnd?'':'hide'}}">已到底部</view>
+                <view class="querybox {{allcount==0?'hide':''}}">
+                    <view class="querypic"></view>
+                    <view class="querytips">未查到商品或商品已下架</view>
+                    <navigator open-type="switchTab" url="/pages/class/class" class="btn-query" hover-class="none">返回首页</navigator>
+                </view>  
+        </scroll-view>
+    </view>
+</view>
+
+<template is="cart" data="{{shoppingCart}}"></template>
+<template is="toast" data="{{toast}}"></template>
+<!-- 底部tab栏 -->

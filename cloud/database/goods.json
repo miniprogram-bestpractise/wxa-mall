@@ -1,0 +1,35 @@
+{
+  "sDescribe": "展示专用商品1",
+  "iMallId": "1000",
+  "sPicLink": "https:\/\/6465-dev-hnrfx-1257967285.tcb.qcloud.la\/list\/sku1.png",
+  "iOriPrice": "150",
+  "iPriceReal": "0.01",
+  "stock": "20"
+}
+
+{
+  "sDescribe": "展示专用商品2",
+  "iMallId": "1001",
+  "sPicLink": "https:\/\/6465-dev-hnrfx-1257967285.tcb.qcloud.la\/list\/sku2.png",
+  "iOriPrice": "250",
+  "iPriceReal": "0.01",
+  "stock": "15"
+}
+
+{
+  "sDescribe": "展示专用商品1",
+  "iMallId": "1002",
+  "sPicLink": "https:\/\/6465-dev-hnrfx-1257967285.tcb.qcloud.la\/list\/sku1.png",
+  "iOriPrice": "150",
+  "iPriceReal": "0.01",
+  "stock": "20"
+}
+
+{
+  "sDescribe": "展示专用商品2",
+  "iMallId": "1003",
+  "sPicLink": "https:\/\/6465-dev-hnrfx-1257967285.tcb.qcloud.la\/list\/sku2.png",
+  "iOriPrice": "250",
+  "iPriceReal": "0.01",
+  "stock": "15"
+}

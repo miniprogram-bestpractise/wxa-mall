@@ -1,0 +1,36 @@
+<!--address.wxml-->
+<view class="container">
+    <!-- 没有收货地址 -->
+    <block wx:if="{{addressList.length == 0}}">
+    <view class="addrtip">
+        <view class="nulladdbox">
+            <view class="i-location"></view>
+            <view class="no-address">还没有收货地址哦！</view>
+        </view>    
+    </view>
+    </block>
+    <block wx:if="{{addressList.length > 0}}">
+    <!-- 地址列表 -->
+    <view class="viewlist">
+        <!--地址一-->
+        <view wx:for="{{addressList}}" wx:for-index="idx" wx:for-item="address"  wx:key="{{address.id}}" class="addressbox" bindtap="select" data-id="{{address.id}}">
+            <view class="namebox">
+                <view class="person">{{address.userName}}</view>
+                <view class="tel">{{address.telNumber}}</view>
+            </view> 
+            <view class="address">{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</view>
+            <view class="actionbox">
+                <view wx:if="{{!selectonly}}" class="i-del" data-id="{{address._id}}" bindtap="del">
+                    <view class="i-delico"></view>
+                    <text>删除</text>
+                </view>                                      
+            </view>
+        </view>
+    </view>
+    </block>
+    <view wx:if="{{isLoaded && !addressList.length}}" class="addr-btnbox">
+        <view class="contpd">
+            <button class="btn-red btn-add" bindtap="addAddress">添加地址</button>
+        </view>                        
+    </view>
+</view>

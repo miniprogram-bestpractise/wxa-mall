@@ -1,0 +1,9 @@
+<!-- 购物车弹窗 -->
+<template name="toast">
+    <!-- 提示弹窗 -->
+    <view class="pop-dialog-alert {{toast.display}}"><!-- 显示添加pop-show -->
+        <view class="dialog-alert">
+            <text class="alert-txt">{{toast.msg}}</text>
+        </view>
+    </view>
+</template>

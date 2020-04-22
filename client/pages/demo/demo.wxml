@@ -1,0 +1,88 @@
+<!--<view>
+    <view style='border:1px;border-style: solid;height:100px'>一个块级元素可以容纳行内元素和其他块级元素，而块级元素高度由其子元素决定</view>
+</view>
+
+<view style='border:1px;border-style: solid;width:100px'>块级元素总是在新行上开始，当再添加新的块级元素时，新元素会自动换行显示，也就是说块级元素它会默认占用一行的高度</view>
+
+<view style='border:1px;border-style: solid;width:60px'>一个平平无奇的块级元素</view>-->
+
+<!--
+<text style="border:1px;border-style: solid;width: 123px">高度、宽度、上下margin、上下padding都是不能直接设置的。宽度就是文字或图片的宽度，不可改变</text>
+
+<view style='border:1px;border-style: solid;margin:10px;padding:10px;display:inline-block'>文字很少</view>
+<view style='border:1px;border-style: solid;margin:10px;padding:10px;display:inline-block'>文字很多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多</view>-->
+<!--
+
+<text>前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；前面的测试文本；</text>
+<text style='border:1px;border-style: solid;float:left;margin: 10px;'>测试浮动框</text>
+<text>后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；后面的测试文本；</text>-->
+
+
+<!--
+<view style="border:3px;border-style: solid;">
+    <view style="border:1px;border-style: solid;">块级元素</view>
+    <view style="border:1px;border-style: solid;float: left">浮动元素</view>
+    <view style="clear: both;height: 0"></view>
+    <view style="border:1px;border-style: solid;">块级元素</view>
+</view>-->
+
+<!--<view style='border:1px;border-style: solid;height: 100rpx'>
+    测试文字覆盖<text style='position:relative;top:20rpx;left:40rpx;background-color:gray;'>relative</text>测试文字覆盖
+</view>-->
+<!--<view style='border:1px;border-style: solid;height: 100rpx;'>
+    <view style="position:relative;background-color: gainsboro">
+        测试文字覆盖<text style='position:absolute;top:20rpx;left:40rpx;background-color:gray;'>absolute</text>测试文字覆盖
+    </view>
+</view>-->
+<!--<view style='border:1px;border-style: solid;height: 100rpx'>
+    测试文字覆盖<text style='position:fixed;top:220rpx;left:40rpx;background-color:gray;'>fixed</text>测试文字覆盖
+</view>-->
+<!--
+
+<view style="display: flex;">
+    <view style='border:1px;border-style: solid;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;height: 100rpx'>3</view>
+</view>-->
+
+
+<!--
+<view style="display: flex;height: 150rpx;width:350rpx;background-color: gray;justify-content:flex-start">
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>3</view>
+</view>
+
+<view style="height: 40rpx"></view>
+
+<view style="display: flex;height: 150rpx;width:350rpx;background-color: gray;justify-content:flex-end">
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>3</view>
+</view>
+
+<view style="height: 40rpx"></view>
+
+<view style="display: flex;height: 150rpx;width:350rpx;background-color: gray;justify-content:center">
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>3</view>
+</view>
+
+<view style="height: 40rpx"></view>
+
+<view style="display: flex;height: 150rpx;width:350rpx;background-color: gray;justify-content:space-between">
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>3</view>
+</view>
+
+<view style="height: 40rpx"></view>
+
+<view style="display: flex;height: 150rpx;width:350rpx;background-color: gray;justify-content:space-around">
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>1</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>2</view>
+    <view style='border:1px;border-style: solid;width:100rpx;height: 100rpx'>3</view>
+</view>-->
+
+<rich-text nodes="<div>test</div>"></rich-text>
